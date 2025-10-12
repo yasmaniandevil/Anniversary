@@ -7,11 +7,14 @@ public class WASDMovement : MonoBehaviour
     private Rigidbody2D rb2D;
     public float jumpForce;
 
+    private bool isRight;
+    private bool isLeft;
+
     //score variables
     //keeps track of score
     private int score;
     //displays score
-    public TextMeshProUGUI scoreText;
+    //public TextMeshProUGUI scoreText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -39,7 +42,7 @@ public class WASDMovement : MonoBehaviour
         //creats a new vector 2 that multiplies input by the speed
         //horizontal/vertical input is either 1 or -1 depending on the key you pressed
         //rb2D.linearVelocity = new Vector2(horizontalInput * speed, verticalInput * speed);
-
+        Vector2 move = new Vector2(horizontalInput, verticalInput);
         //if the player hits space
         if (Input.GetKey(KeyCode.Space))
         {
@@ -48,28 +51,30 @@ public class WASDMovement : MonoBehaviour
             rb2D.linearVelocity = new Vector2(rb2D.linearVelocity.x, jumpForce);
         }
 
-        if (Input.GetKey((KeyCode.A)))
+        //so if we are pressing D
+        if (horizontalInput > 0)
         {
-            rb2D.linearVelocity = new Vector2(-1 * speed, 0);
-            //rb2D.AddForce(new Vector2(-1 * speed, 0));
+            isRight = true;
+        }
+        //if we are pressinf a so -1
+        if (horizontalInput < 0)
+        {
+            isLeft = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.D))
+        if (isRight)
         {
-            //rb2D.linearVelocity = new Vector2(1 * speed, rb2D.linearVelocity.y);
+            transform.Rotate(0, 0, 90 * Time.deltaTime);
+            Debug.Log("Turn Right");
         }
 
-        if (Input.GetKeyDown(KeyCode.W))
+        if (isLeft)
         {
-            rb2D.linearVelocity = new Vector2(rb2D.linearVelocity.x, verticalInput * speed);
-            
+            transform.Rotate(0, 0, -90 * Time.deltaTime);
+            Debug.Log("Turn Left");
         }
+
         
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            rb2D.linearVelocity = new Vector2(rb2D.linearVelocity.x, verticalInput * speed);
-            
-        }
 
         //can you make a sprinting button?
         //if get key
@@ -108,7 +113,7 @@ public class WASDMovement : MonoBehaviour
         {
             AddScore(1);
             //changes the text to whatever the current score is!
-            scoreText.text = "Score" + score.ToString();
+            //scoreText.text = "Score" + score.ToString();
             Destroy(collision.gameObject);
         }
     }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class CameraManager : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class CameraManager : MonoBehaviour
     private int cameraIndex;
     
     //fade panel
-    public TextMeshPro blackPanel;
+    public Image blackPanel;
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -34,21 +35,13 @@ public class CameraManager : MonoBehaviour
         if (Input.GetKey(KeyCode.E))
         {
             SwitchCamera(camerasList[1]);
-            Debug.Log("function called");
+            Debug.Log("switch cameras");
             
         }
 
         if (Input.GetKey(KeyCode.Q))
         {
-            /*//save the current color by storing it into a local variable
-            Color currentColor = blackPanel.color;
-            //set the new color
-            currentColor.a = 0;
-            blackPanel.color = currentColor;*/
-            
-            Color colorLerp = new Color(0, 0, 0, 0);
-            Color lerpedColor = Color.Lerp(Color.black, colorLerp, Time.deltaTime * 2);
-            blackPanel.color = lerpedColor;
+            ChangePanel();
         }
     }
     
@@ -66,8 +59,20 @@ public class CameraManager : MonoBehaviour
         Debug.Log("cam enabled true");
     }
 
+    void ChangePanel()
+    {
+        //start color is black
+        Color startColor = Color.black;
+        //end color is transparent
+        Color colorLerp = new Color(0, 0, 0, 0);
+        Color lerpedColor = Color.Lerp(startColor, colorLerp, Time.deltaTime * 10);
+        blackPanel.color = lerpedColor;
+        //lerpedColor = blackPanel.color;
+        Debug.Log("color panel");
+    }
+
     private void OnMouseDown()
     {
-        
+      
     }
 }
