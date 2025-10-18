@@ -10,16 +10,36 @@ public class OnLetters : MonoBehaviour
     private Camera mainCam;
     
     public bool amDragging = false;
+
+    CameraFollow cameraFollowScript;
+
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //assign the camera follow cam?
         mainCam = Camera.main;
+
+        cameraFollowScript = mainCam.GetComponent<CameraFollow>();
+        //i can call the switch camera function here
+        
+
+       
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(amDragging)
+        {
+            //this switches the target to the letter you are currently dragging
+            cameraFollowScript.SwitchTarget(gameObject.transform);
+        }
+        else
+        {
+            //cameraFollowScript.SwitchTarget()
+        }
     }
 
     private void OnMouseDown()
