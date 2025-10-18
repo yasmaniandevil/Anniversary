@@ -13,7 +13,7 @@ public class CameraManager : MonoBehaviour
     //fade panel
     public Image blackPanel;
     
-    
+    OnLetters onLetters;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -43,6 +43,11 @@ public class CameraManager : MonoBehaviour
         {
             ChangePanel();
         }
+
+        if (onLetters.amDragging)
+        {
+            //SwitchCamera(1);
+        }
     }
     
     void SwitchCamera(Camera cam)
@@ -71,8 +76,5 @@ public class CameraManager : MonoBehaviour
         Debug.Log("color panel");
     }
 
-    private void OnMouseDown()
-    {
-      
-    }
+    
 }

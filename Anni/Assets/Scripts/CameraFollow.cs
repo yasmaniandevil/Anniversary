@@ -6,10 +6,12 @@ public class CameraFollow : MonoBehaviour
     public float smoothSpeed;
     public Vector3 offset;
 
+    public Transform letter;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        //on start make the target the player
     }
 
     // Update is called once per frame
@@ -24,6 +26,17 @@ public class CameraFollow : MonoBehaviour
             //lerp smoothly interpolate btwn the current position and the desired position
             Vector3 smoothPos = Vector3.Lerp(transform.position, desiredPos, smoothSpeed);
             transform.position = smoothPos;
+        }
+    }
+
+    //function that just switches the target
+    //then that function needs to update the camera 
+    void SwitchTarget(GameObject target)
+    {
+        if (target != null)
+        {
+            Vector3 desiredPos = target.transform.position + offset;
+            
         }
     }
 }
