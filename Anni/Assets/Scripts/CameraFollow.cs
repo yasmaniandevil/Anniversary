@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class CameraFollow : MonoBehaviour
 {
@@ -8,6 +9,11 @@ public class CameraFollow : MonoBehaviour
 
     public Transform letter;
     OnLetters onLettersScript;
+    
+    //zoom in var
+    public float targetFOV;
+    public float defaultFOV;
+    public float zoomSpeed;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -45,4 +51,23 @@ public class CameraFollow : MonoBehaviour
 
         }
     }
+    
+    //i need to actually do something with FOV
+    IEnumerator ZoomIn(Camera cam, float targetFOV, float duration)
+    {
+        float startFOV = cam.fieldOfView;
+        float elapsedTime = 0;
+        elapsedTime += Time.deltaTime;
+        while (elapsedTime < duration)
+        {
+            cam.fieldOfView = Mathf.Lerp(startFOV, targetFOV, elapsedTime / duration);
+            yield return null;
+        }
+
+        cam.fieldOfView = targetFOV;
+
+        elapsedTime = 0;
+        yield return null;
+    }
+
 }

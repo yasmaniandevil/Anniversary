@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using System.Collections;
 
 public class OnLetters : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class OnLetters : MonoBehaviour
     public bool amDragging = false;
 
     CameraFollow cameraFollowScript;
+    
+    
 
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -33,8 +36,8 @@ public class OnLetters : MonoBehaviour
     {
         if(amDragging)
         {
-            //this switches the target to the letter you are currently dragging
-            cameraFollowScript.SwitchTarget(gameObject.transform);
+            
+            
         }
         else
         {
@@ -42,16 +45,18 @@ public class OnLetters : MonoBehaviour
         }
     }
 
+    
     private void OnMouseDown()
     {
-        offset = transform.position - mainCam.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mouseWorldPos = mainCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
+        offset = transform.position - mouseWorldPos;
         amDragging = true;
     }
 
     private void OnMouseDrag()
     {
         Debug.Log("drag the obj");
-        Vector3 mouseWorldPos = mainCam.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mouseWorldPos = mainCam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10));
         transform.position = new Vector3(mouseWorldPos.x + offset.x, 
             mouseWorldPos.y + offset.y, transform.position.z);
         
@@ -60,5 +65,10 @@ public class OnLetters : MonoBehaviour
     private void OnMouseUp()
     {
         amDragging = false;
+        
+        //this switches the target to the letter you are currently dragging
+        cameraFollowScript.SwitchTarget(gameObject.transform);
     }
+    
+    
 }
