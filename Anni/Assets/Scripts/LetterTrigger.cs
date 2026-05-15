@@ -26,8 +26,7 @@ public class LetterTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("is player");
-            Vector2 offset = new Vector2(-3, 0);
-            Instantiate(letterPrefab, offset, Quaternion.identity);
+            Instantiate(letterPrefab, transform.position, Quaternion.identity);
             Debug.Log("set active letters");
         }
     }
