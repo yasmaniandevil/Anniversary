@@ -7,7 +7,8 @@ public class WASDMovement : MonoBehaviour
     private Rigidbody2D rb2D;
     public float jumpForce;
 
-    
+    private bool isRight;
+    private bool isLeft;
 
     //score variables
     //keeps track of score
@@ -28,14 +29,20 @@ public class WASDMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      
+        //unitys "old" inout system
+        //horizontal is mapped to left/right arrow and a/d key
+        //getting the axis called horizontal and storing it inside our variable
         float horizontalInput = Input.GetAxis("Horizontal");
         //vertical is mapped to w/s and up and down keys
         float verticalInput = Input.GetAxis("Vertical");
 
-        
+        // vector2 (x, y)
+        //4 = 2+2
+        //accessing the linear velocity of our rigidbody
+        //creats a new vector 2 that multiplies input by the speed
+        //horizontal/vertical input is either 1 or -1 depending on the key you pressed
+        //rb2D.linearVelocity = new Vector2(horizontalInput * speed, verticalInput * speed);
         Vector2 move = new Vector2(horizontalInput, verticalInput);
-        rb2D.linearVelocity = move * speed;
         //if the player hits space
         if (Input.GetKey(KeyCode.Space))
         {
@@ -45,28 +52,46 @@ public class WASDMovement : MonoBehaviour
         }
 
         //so if we are pressing D
-        if (move.x > 0)
+        if (horizontalInput > 0)
         {
-            transform.rotation = Quaternion.Euler(0, 0, 90);
-        }else if (move.x < 0) //a
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 270);
+            isRight = true;
         }
-        else if(move.y > 0) //w
+        //if we are pressinf a so -1
+        if (horizontalInput < 0)
         {
-            transform.rotation = Quaternion.Euler(0, 0, 180);
-        }else if (move.y < 0) //s
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+            isLeft = true;
         }
 
+        if (isRight)
+        {
+            transform.Rotate(0, 0, 90 * Time.deltaTime);
+            Debug.Log("Turn Right");
+        }
+
+        if (isLeft)
+        {
+            transform.Rotate(0, 0, -90 * Time.deltaTime);
+            Debug.Log("Turn Left");
+        }
+
+        
+
+        //can you make a sprinting button?
+        //if get key
+        //make player faster
     }
 
+    //think of it as a report
+    //when we hit an object
+    //unity will store what object we hit in our collision var
     //then it passes it in to our method
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("I Hit: " + collision.gameObject.name);
-       
+        //can you check for a specific collision
+        //compare tag again
+        //if it is this tag
+        //then increase player velocity
 
         if (collision.gameObject.CompareTag("Wall"))
         {
@@ -78,7 +103,9 @@ public class WASDMovement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("I triggered: " + collision.gameObject.name);
-        
+        //place an insivible trigger somewhere in the game that moves the players position
+        //compare tag
+        //transform.position
 
 
 
