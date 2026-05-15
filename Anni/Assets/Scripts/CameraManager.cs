@@ -11,14 +11,9 @@ public class CameraManager : MonoBehaviour
     private int cameraIndex;
     
     //fade panel
-    private Image blackPanel;
+    public Image blackPanel;
     
     OnLetters onLetters;
-    CameraFollow cameraFollowScript;
-
-    public Camera cameraFollow;
-
-   
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -28,8 +23,6 @@ public class CameraManager : MonoBehaviour
         {
             SwitchCamera(camerasList[0]);
         }
-
-        cameraFollowScript = GetComponent<CameraFollow>();
 
     }
 
@@ -48,12 +41,12 @@ public class CameraManager : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Q))
         {
-            //ChangePanel();
+            ChangePanel();
         }
 
         if (onLetters.amDragging)
         {
-            //onLetters.mainCam = cameraFollow;
+            //SwitchCamera(1);
         }
     }
     
