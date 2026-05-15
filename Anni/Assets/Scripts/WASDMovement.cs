@@ -7,13 +7,16 @@ public class WASDMovement : MonoBehaviour
     private Rigidbody2D rb2D;
     public float jumpForce;
 
+<<<<<<< HEAD:Anni/Assets/Scripts/WASDMovement.cs
     
 
+=======
+>>>>>>> parent of 8a2949f (added car and fixing movement for it):Anni/Assets/WASDMovement.cs
     //score variables
     //keeps track of score
     private int score;
     //displays score
-    //public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI scoreText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,9 +36,19 @@ public class WASDMovement : MonoBehaviour
         //vertical is mapped to w/s and up and down keys
         float verticalInput = Input.GetAxis("Vertical");
 
+<<<<<<< HEAD:Anni/Assets/Scripts/WASDMovement.cs
         
         Vector2 move = new Vector2(horizontalInput, verticalInput);
         rb2D.linearVelocity = move * speed;
+=======
+        // vector2 (x, y)
+        //4 = 2+2
+        //accessing the linear velocity of our rigidbody
+        //creats a new vector 2 that multiplies input by the speed
+        //horizontal/vertical input is either 1 or -1 depending on the key you pressed
+        //rb2D.linearVelocity = new Vector2(horizontalInput * speed, verticalInput * speed);
+
+>>>>>>> parent of 8a2949f (added car and fixing movement for it):Anni/Assets/WASDMovement.cs
         //if the player hits space
         if (Input.GetKey(KeyCode.Space))
         {
@@ -44,6 +57,7 @@ public class WASDMovement : MonoBehaviour
             rb2D.linearVelocity = new Vector2(rb2D.linearVelocity.x, jumpForce);
         }
 
+<<<<<<< HEAD:Anni/Assets/Scripts/WASDMovement.cs
         //so if we are pressing D
         if (move.x > 0)
         {
@@ -60,6 +74,34 @@ public class WASDMovement : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
 
+=======
+        if (Input.GetKey((KeyCode.A)))
+        {
+            rb2D.linearVelocity = new Vector2(-1 * speed, 0);
+            //rb2D.AddForce(new Vector2(-1 * speed, 0));
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            //rb2D.linearVelocity = new Vector2(1 * speed, rb2D.linearVelocity.y);
+        }
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            rb2D.linearVelocity = new Vector2(rb2D.linearVelocity.x, verticalInput * speed);
+            
+        }
+        
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            rb2D.linearVelocity = new Vector2(rb2D.linearVelocity.x, verticalInput * speed);
+            
+        }
+
+        //can you make a sprinting button?
+        //if get key
+        //make player faster
+>>>>>>> parent of 8a2949f (added car and fixing movement for it):Anni/Assets/WASDMovement.cs
     }
 
     //then it passes it in to our method
@@ -86,7 +128,7 @@ public class WASDMovement : MonoBehaviour
         {
             AddScore(1);
             //changes the text to whatever the current score is!
-            //scoreText.text = "Score" + score.ToString();
+            scoreText.text = "Score" + score.ToString();
             Destroy(collision.gameObject);
         }*/
     }

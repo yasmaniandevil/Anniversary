@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
 
 public class CameraManager : MonoBehaviour
 {
@@ -11,7 +10,12 @@ public class CameraManager : MonoBehaviour
     private int cameraIndex;
     
     //fade panel
+<<<<<<< HEAD:Anni/Assets/Scripts/CameraManager.cs
     private Image blackPanel;
+=======
+    public TextMeshPro blackPanel;
+    
+>>>>>>> parent of 8a2949f (added car and fixing movement for it):Anni/Assets/CameraManager.cs
     
     OnLetters onLetters;
     CameraFollow cameraFollowScript;
@@ -42,18 +46,30 @@ public class CameraManager : MonoBehaviour
         if (Input.GetKey(KeyCode.E))
         {
             SwitchCamera(camerasList[1]);
-            Debug.Log("switch cameras");
+            Debug.Log("function called");
             
         }
 
         if (Input.GetKey(KeyCode.Q))
         {
+<<<<<<< HEAD:Anni/Assets/Scripts/CameraManager.cs
             //ChangePanel();
         }
 
         if (onLetters.amDragging)
         {
             //onLetters.mainCam = cameraFollow;
+=======
+            /*//save the current color by storing it into a local variable
+            Color currentColor = blackPanel.color;
+            //set the new color
+            currentColor.a = 0;
+            blackPanel.color = currentColor;*/
+            
+            Color colorLerp = new Color(0, 0, 0, 0);
+            Color lerpedColor = Color.Lerp(Color.black, colorLerp, Time.deltaTime * 2);
+            blackPanel.color = lerpedColor;
+>>>>>>> parent of 8a2949f (added car and fixing movement for it):Anni/Assets/CameraManager.cs
         }
     }
     
@@ -71,6 +87,7 @@ public class CameraManager : MonoBehaviour
         Debug.Log("cam enabled true");
     }
 
+<<<<<<< HEAD:Anni/Assets/Scripts/CameraManager.cs
     void ChangePanel()
     {
         //start color is black
@@ -84,4 +101,10 @@ public class CameraManager : MonoBehaviour
     }
 
     
+=======
+    private void OnMouseDown()
+    {
+        
+    }
+>>>>>>> parent of 8a2949f (added car and fixing movement for it):Anni/Assets/CameraManager.cs
 }
