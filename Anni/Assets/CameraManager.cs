@@ -13,12 +13,16 @@ public class CameraManager : MonoBehaviour
     //fade panel
     private Image blackPanel;
     
+<<<<<<< HEAD:Anni/Assets/Scripts/CameraManager.cs
     OnLetters onLetters;
     CameraFollow cameraFollowScript;
 
     public Camera cameraFollow;
 
    
+=======
+    
+>>>>>>> parent of 09c2b8a (making letter appear):Anni/Assets/CameraManager.cs
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -50,11 +54,14 @@ public class CameraManager : MonoBehaviour
         {
             //ChangePanel();
         }
+<<<<<<< HEAD:Anni/Assets/Scripts/CameraManager.cs
 
         if (onLetters.amDragging)
         {
             //onLetters.mainCam = cameraFollow;
         }
+=======
+>>>>>>> parent of 09c2b8a (making letter appear):Anni/Assets/CameraManager.cs
     }
     
     void SwitchCamera(Camera cam)
@@ -83,5 +90,8 @@ public class CameraManager : MonoBehaviour
         Debug.Log("color panel");
     }
 
-    
+    private void OnMouseDown()
+    {
+      
+    }
 }
