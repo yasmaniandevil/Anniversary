@@ -82,13 +82,13 @@ public class WASDMovement : MonoBehaviour
 
 
 
-        if (collision.gameObject.CompareTag("Coins"))
+        /*if (collision.gameObject.CompareTag("Coins"))
         {
             AddScore(1);
             //changes the text to whatever the current score is!
             //scoreText.text = "Score" + score.ToString();
             Destroy(collision.gameObject);
-        }
+        }*/
     }
 
     private void AddScore(int amt)

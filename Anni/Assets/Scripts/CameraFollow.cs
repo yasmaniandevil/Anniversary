@@ -6,7 +6,6 @@ public class CameraFollow : MonoBehaviour
     public float smoothSpeed;
     public Vector3 offset;
 
-<<<<<<< HEAD:Anni/Assets/Scripts/CameraFollow.cs
     public Transform letter;
     OnLetters onLettersScript;
 
@@ -15,12 +14,6 @@ public class CameraFollow : MonoBehaviour
     {
         //on start make the target the player
         SwitchTarget(player);
-=======
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
->>>>>>> parent of 09c2b8a (making letter appear):Anni/Assets/CameraFollow.cs
     }
 
     // Update is called once per frame
@@ -39,7 +32,6 @@ public class CameraFollow : MonoBehaviour
 
         
     }
-<<<<<<< HEAD:Anni/Assets/Scripts/CameraFollow.cs
 
     //function that just switches the target
     //then that function needs to update the camera 
@@ -53,6 +45,4 @@ public class CameraFollow : MonoBehaviour
 
         }
     }
-=======
->>>>>>> parent of 09c2b8a (making letter appear):Anni/Assets/CameraFollow.cs
 }
